@@ -3,9 +3,7 @@ mod helper;
 
 async fn _arena_request() -> SfResult<()> {
     let client = SfClient::new();
-    let card = client.arena(67330)
-        .await
-        .expect("Unable to load card");
+    let card = client.arena(67330).await.expect("Unable to load card");
 
     assert_eq!(card.gameplay.name, "Yargle, Glutton of Urborg");
 

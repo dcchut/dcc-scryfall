@@ -29,24 +29,14 @@ pub enum Identifier {
 impl Identifier {
     pub(crate) fn as_value(&self) -> serde_json::Value {
         match self {
-            Identifier::Id(id) => json!({
-            "id": id
-            }),
-            Identifier::MTGOId(mtgo_id) => json!({
-            "mtgo_id": mtgo_id
-            }),
-            Identifier::MultiverseId(multiverse_id) => json!({
-            "multiverse_id": multiverse_id
-            }),
-            Identifier::OracleId(oracle_id) => json!({
-            "oracle_id": oracle_id
-            }),
-            Identifier::IllustrationId(illustration_id) => json!({
-            "illustration_id": illustration_id
-            }),
-            Identifier::Name(name) => json!({
-            "name": name
-            }),
+            Identifier::Id(id) => json!({ "id": id }),
+            Identifier::MTGOId(mtgo_id) => json!({ "mtgo_id": mtgo_id }),
+            Identifier::MultiverseId(multiverse_id) => json!({ "multiverse_id": multiverse_id }),
+            Identifier::OracleId(oracle_id) => json!({ "oracle_id": oracle_id }),
+            Identifier::IllustrationId(illustration_id) => {
+                json!({ "illustration_id": illustration_id })
+            }
+            Identifier::Name(name) => json!({ "name": name }),
             Identifier::NameAndSet(name, set) => json!({
             "name": name,
             "set": set

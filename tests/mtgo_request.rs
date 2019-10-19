@@ -3,9 +3,7 @@ mod helper;
 
 async fn _mtgo_request() -> SfResult<()> {
     let client = SfClient::new();
-    let card = client.mtgo(54957)
-        .await
-        .expect("Unable to load card");
+    let card = client.mtgo(54957).await.expect("Unable to load card");
 
     assert_eq!(card.gameplay.name, "Ghost Quarter");
 

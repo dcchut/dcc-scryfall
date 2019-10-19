@@ -1,29 +1,8 @@
 use crate::{SfClient, SfResult};
-pub use autocomplete::Autocomplete;
-pub use named::Named;
-pub use search::Search;
-pub use random::Random;
-pub use set_collector::SetAndCollectorNumber;
-pub use collection::Collection;
-pub use multiverse::Multiverse;
-pub use arena::Arena;
-pub use mtgo::Mtgo;
-pub use tcgplayer::TcgPlayer;
-pub use id::ScryfallId;
-
 use serde::de::DeserializeOwned;
 
-mod arena;
-mod autocomplete;
-mod id;
-mod mtgo;
-mod multiverse;
-mod named;
-mod search;
-mod random;
-mod collection;
-mod set_collector;
-mod tcgplayer;
+pub mod cards;
+pub mod sets;
 
 #[derive(Copy, Clone)]
 pub enum Method {
@@ -82,9 +61,8 @@ pub async fn execute<T: DeserializeOwned>(
     }
 
     // Add the request body
-    match ep.body() {
-        Some(value) => { req = req.json(&value); },
-        None => {},
+    if let Some(value) = ep.body() {
+        req = req.json(&value);
     }
 
     // Send the request

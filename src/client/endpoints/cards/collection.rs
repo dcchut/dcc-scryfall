@@ -1,6 +1,6 @@
+use crate::card::Identifier;
 use crate::client::endpoints::{Endpoint, Method};
 use crate::{Card, List};
-use crate::card::Identifier;
 use serde_json::json;
 
 pub struct Collection {
@@ -25,10 +25,8 @@ impl Endpoint for Collection {
     }
 
     fn body(&self) -> Option<serde_json::Value> {
-        Some(
-            json!({
-            "identifiers": self.identifiers.iter().map(|x| x.as_value()).collect::<Vec<_>>(),
-            })
-        )
+        Some(json!({
+        "identifiers": self.identifiers.iter().map(|x| x.as_value()).collect::<Vec<_>>(),
+        }))
     }
 }

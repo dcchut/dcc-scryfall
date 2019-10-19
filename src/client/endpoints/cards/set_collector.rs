@@ -17,7 +17,6 @@ impl SetAndCollectorNumber {
     }
 }
 
-
 impl Endpoint for SetAndCollectorNumber {
     type Output = Card;
 

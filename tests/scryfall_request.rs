@@ -3,7 +3,8 @@ mod helper;
 
 async fn _scryfall_request() -> SfResult<()> {
     let client = SfClient::new();
-    let card = client.id(String::from("c8b4d10d-ecf4-4dad-89d3-12333b522358"))
+    let card = client
+        .id(String::from("c8b4d10d-ecf4-4dad-89d3-12333b522358"))
         .await
         .expect("Unable to load card");
 

@@ -1,6 +1,9 @@
 use crate::card::{Card, Identifier};
-use crate::client::endpoints::*;
+use crate::client::endpoints::cards::*;
+use crate::client::endpoints::execute;
+use crate::client::endpoints::sets::SetCode;
 use crate::list::List;
+use crate::Set;
 use reqwest::Client as ReqClient;
 
 mod endpoints;
@@ -22,58 +25,77 @@ impl SfClient {
         }
     }
 
-    pub async fn search(&self, query: &str) -> SfResult<List<Card>> {
+    pub async fn card_search(&self, query: &str) -> SfResult<List<Card>> {
         let ep = Search::new(query);
         execute(ep, self).await
     }
 
-    pub async fn named(&self, fuzzy: bool, query: &str) -> SfResult<Card> {
+    pub async fn card_named(&self, fuzzy: bool, query: &str) -> SfResult<Card> {
         let ep = Named::new(fuzzy, query);
         execute(ep, self).await
     }
 
-    pub async fn autocomplete(&self, query: &str) -> SfResult<List<String>> {
+    pub async fn card_autocomplete(&self, query: &str) -> SfResult<List<String>> {
         let ep = Autocomplete::new(query);
         execute(ep, self).await
     }
 
-    pub async fn random(&self) -> SfResult<Card> {
+    pub async fn card_random(&self) -> SfResult<Card> {
         let ep = Random::new();
         execute(ep, self).await
     }
 
-    pub async fn collections(&self, identifiers: Vec<Identifier>) -> SfResult<List<Card>> {
+    pub async fn card_collections(&self, identifiers: Vec<Identifier>) -> SfResult<List<Card>> {
         let ep = Collection::new(identifiers);
         execute(ep, self).await
     }
 
-    pub async fn set_and_collector_number(&self, set_code: String, collector_number: usize) -> SfResult<Card> {
+    pub async fn card_set_and_collector_number(
+        &self,
+        set_code: String,
+        collector_number: usize,
+    ) -> SfResult<Card> {
         let ep = SetAndCollectorNumber::new(set_code, collector_number);
         execute(ep, self).await
     }
 
-    pub async fn multiverse(&self, multiverse_id: usize) -> SfResult<Card> {
+    pub async fn card_multiverse(&self, multiverse_id: usize) -> SfResult<Card> {
         let ep = Multiverse::new(multiverse_id);
         execute(ep, self).await
     }
 
-    pub async fn mtgo(&self, mtgo_id: usize) -> SfResult<Card> {
+    pub async fn card_mtgo(&self, mtgo_id: usize) -> SfResult<Card> {
         let ep = Mtgo::new(mtgo_id);
         execute(ep, self).await
     }
 
-    pub async fn arena(&self, arena_id: usize) -> SfResult<Card> {
+    pub async fn card_arena(&self, arena_id: usize) -> SfResult<Card> {
         let ep = Arena::new(arena_id);
         execute(ep, self).await
     }
 
-    pub async fn tcgplayer(&self, tcgplayer_id: usize) -> SfResult<Card> {
+    pub async fn card_tcgplayer(&self, tcgplayer_id: usize) -> SfResult<Card> {
         let ep = TcgPlayer::new(tcgplayer_id);
         execute(ep, self).await
     }
 
-    pub async fn id(&self, scryfall_id: String) -> SfResult<Card> {
+    pub async fn card_id(&self, scryfall_id: String) -> SfResult<Card> {
         let ep = ScryfallId::new(scryfall_id);
+        execute(ep, self).await
+    }
+
+    pub async fn set_code(&self, set_code: String) -> SfResult<Set> {
+        let ep = SetCode::new(set_code);
+        execute(ep, self).await
+    }
+
+    pub async fn set_tcgplayer(&self, tcgplayer_id: usize) -> SfResult<Set> {
+        let ep = crate::client::endpoints::sets::TcgPlayer::new(tcgplayer_id);
+        execute(ep, self).await
+    }
+
+    pub async fn set_id(&self, scryfall_id: String) -> SfResult<Set> {
+        let ep = crate::client::endpoints::sets::ScryfallId::new(scryfall_id);
         execute(ep, self).await
     }
 }

@@ -1,4 +1,4 @@
-use dcc_scryfall::{SfClient, SfResult, card::Identifier};
+use dcc_scryfall::{card::Identifier, SfClient, SfResult};
 mod helper;
 
 async fn _identifiers_request() -> SfResult<()> {

@@ -1,11 +1,11 @@
 pub use crate::card::core::Core;
 pub use crate::card::face::Face;
 pub use crate::card::gameplay::Gameplay;
+pub use crate::card::identifier::Identifier;
 pub use crate::card::legality::Legality;
 pub use crate::card::price::Price;
 pub use crate::card::print::Print;
 pub use crate::card::related::Related;
-pub use crate::card::identifier::Identifier;
 
 use serde::{Deserialize, Serialize};
 
