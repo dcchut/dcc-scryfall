@@ -1,5 +1,5 @@
 use crate::card::Card;
-use crate::client::endpoints::SEARCH_ENDPOINT;
+use crate::client::endpoints::{execute, Search};
 use crate::list::List;
 use reqwest::Client as ReqClient;
 
@@ -12,6 +12,10 @@ pub struct SfClient {
 }
 
 impl SfClient {
+    pub fn from_client(inner: ReqClient) -> Self {
+        Self { inner }
+    }
+
     pub fn new() -> Self {
         Self {
             inner: ReqClient::new(),
@@ -19,16 +23,8 @@ impl SfClient {
     }
 
     pub async fn search(&self, query: &str) -> SfResult<List<Card>> {
-        let js: List<Card> = self
-            .inner
-            .get(SEARCH_ENDPOINT)
-            .query(&[("q", query)])
-            .send()
-            .await?
-            .json()
-            .await?;
-
-        Ok(js)
+        let ep = Search::new(query);
+        execute(ep, self).await
     }
 }
 

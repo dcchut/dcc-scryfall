@@ -4,7 +4,6 @@ mod helper;
 
 async fn _card_list_request() -> SfResult<()> {
     let client = SfClient::new();
-
     let card_list = client.search("Ghalta, Primal Hunger").await?;
 
     // Should only be 1 response
