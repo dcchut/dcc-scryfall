@@ -11,7 +11,7 @@ async fn _identifiers_request() -> SfResult<()> {
     let identifiers = vec![id1, id2, id3];
 
     let response = client
-        .collections(identifiers)
+        .card_collections(identifiers)
         .await
         .expect("Unable to load collections");
 

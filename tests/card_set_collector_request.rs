@@ -4,7 +4,7 @@ mod helper;
 async fn _set_collector_request() -> SfResult<()> {
     let client = SfClient::new();
     let card = client
-        .set_and_collector_number(String::from("xln"), 96)
+        .card_set_and_collector_number(String::from("xln"), 96)
         .await
         .expect("Unable to load set and collector number");
 

@@ -4,7 +4,7 @@ mod helper;
 async fn _multiverse_request() -> SfResult<()> {
     let client = SfClient::new();
     let card = client
-        .multiverse(409574)
+        .card_multiverse(409574)
         .await
         .expect("Unable to load card");
 

@@ -4,7 +4,7 @@ mod helper;
 async fn _fuzzy_named_request() -> SfResult<()> {
     let client = SfClient::new();
     let card = client
-        .named(true, "jac bele")
+        .card_named(true, "jac bele")
         .await
         .expect("Unable to load card");
 

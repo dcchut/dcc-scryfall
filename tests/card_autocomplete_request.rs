@@ -4,7 +4,7 @@ mod helper;
 async fn _autocomplete_request() -> SfResult<()> {
     let client = SfClient::new();
     let completions = client
-        .autocomplete("thal")
+        .card_autocomplete("thal")
         .await
         .expect("Unable to load autocomplete");
 
