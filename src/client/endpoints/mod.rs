@@ -1,7 +1,12 @@
 use crate::{SfClient, SfResult};
+pub use autocomplete::Autocomplete;
+pub use named::Named;
 pub use search::Search;
+
 use serde::de::DeserializeOwned;
 
+mod autocomplete;
+mod named;
 mod search;
 
 #[derive(Copy, Clone)]
@@ -47,7 +52,14 @@ pub async fn execute<T: DeserializeOwned>(
     }
 
     // Send the request
-    let res = req.send().await?.json().await?;
+    let response = req.send().await?;
+
+    // If the response is a 404, return an error
+    if response.status() == 404 {
+        return Err("Request returned status code 404".into());
+    }
+
+    let res = response.json().await?;
 
     Ok(res)
 }

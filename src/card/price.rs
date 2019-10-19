@@ -2,8 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Price {
-    pub usd: String,
-    pub usd_foil: String,
-    pub eur: String,
-    pub tix: String,
+    pub usd: Option<String>,
+    pub usd_foil: Option<String>,
+    pub eur: Option<String>,
+    pub tix: Option<String>,
 }

@@ -1,5 +1,5 @@
 use crate::card::Card;
-use crate::client::endpoints::{execute, Search};
+use crate::client::endpoints::*;
 use crate::list::List;
 use reqwest::Client as ReqClient;
 
@@ -24,6 +24,16 @@ impl SfClient {
 
     pub async fn search(&self, query: &str) -> SfResult<List<Card>> {
         let ep = Search::new(query);
+        execute(ep, self).await
+    }
+
+    pub async fn named(&self, fuzzy: bool, query: &str) -> SfResult<Card> {
+        let ep = Named::new(fuzzy, query);
+        execute(ep, self).await
+    }
+
+    pub async fn autocomplete(&self, query: &str) -> SfResult<List<String>> {
+        let ep = Autocomplete::new(query);
         execute(ep, self).await
     }
 }
