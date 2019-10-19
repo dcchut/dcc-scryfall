@@ -1,15 +1,20 @@
-use crate::card::core::Core;
-use crate::card::gameplay::Gameplay;
-use crate::card::print::Print;
+pub use crate::card::core::Core;
+pub use crate::card::face::Face;
+pub use crate::card::gameplay::Gameplay;
+pub use crate::card::legality::Legality;
+pub use crate::card::price::Price;
+pub use crate::card::print::Print;
+pub use crate::card::related::Related;
+
 use serde::{Deserialize, Serialize};
 
-pub mod core;
-pub mod face;
-pub mod gameplay;
-pub mod legality;
-pub mod price;
-pub mod print;
-pub mod related;
+mod core;
+mod face;
+mod gameplay;
+mod legality;
+mod price;
+mod print;
+mod related;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Card {

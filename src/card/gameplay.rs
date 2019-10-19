@@ -1,8 +1,8 @@
-use serde::{Deserialize, Serialize};
-use crate::color::Color;
+use crate::card::face::Face;
 use crate::card::legality::Legality;
 use crate::card::related::Related;
-use crate::card::face::Face;
+use crate::color::Color;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Gameplay {
