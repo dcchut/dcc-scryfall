@@ -9,7 +9,7 @@ pub struct Face {
     pub colors: Option<Vec<Color>>,
     pub flavor_text: Option<String>,
     pub illustration_id: Option<String>,
-    pub image_uris: ImageUri,
+    pub image_uris: Option<ImageUri>,
     pub loyalty: Option<String>,
     pub mana_cost: String,
     pub name: String,

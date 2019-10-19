@@ -5,12 +5,14 @@ pub use crate::card::legality::Legality;
 pub use crate::card::price::Price;
 pub use crate::card::print::Print;
 pub use crate::card::related::Related;
+pub use crate::card::identifier::Identifier;
 
 use serde::{Deserialize, Serialize};
 
 mod core;
 mod face;
 mod gameplay;
+mod identifier;
 mod legality;
 mod price;
 mod print;
