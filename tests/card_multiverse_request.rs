@@ -1,4 +1,5 @@
 use dcc_scryfall::{SfClient, SfResult};
+
 mod helper;
 
 async fn _multiverse_request() -> SfResult<()> {

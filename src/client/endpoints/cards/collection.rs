@@ -1,7 +1,8 @@
+use serde_json::json;
+
 use crate::card::Identifier;
 use crate::client::endpoints::{Endpoint, Method};
 use crate::{Card, List};
-use serde_json::json;
 
 pub struct Collection {
     identifiers: Vec<Identifier>,

@@ -1,10 +1,11 @@
+use reqwest::Client as ReqClient;
+
 use crate::card::{Card, Identifier};
 use crate::client::endpoints::cards::*;
 use crate::client::endpoints::execute;
 use crate::client::endpoints::sets::SetCode;
 use crate::list::List;
 use crate::Set;
-use reqwest::Client as ReqClient;
 
 mod endpoints;
 

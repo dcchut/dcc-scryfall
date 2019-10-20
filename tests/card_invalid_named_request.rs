@@ -1,4 +1,5 @@
 use dcc_scryfall::{SfClient, SfResult};
+
 mod helper;
 
 async fn _invalid_named_request() -> SfResult<()> {

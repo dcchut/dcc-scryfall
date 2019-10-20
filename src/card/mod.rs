@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 pub use crate::card::core::Core;
 pub use crate::card::face::Face;
 pub use crate::card::gameplay::Gameplay;
@@ -6,8 +8,6 @@ pub use crate::card::legality::Legality;
 pub use crate::card::price::Price;
 pub use crate::card::print::Print;
 pub use crate::card::related::Related;
-
-use serde::{Deserialize, Serialize};
 
 mod core;
 mod face;

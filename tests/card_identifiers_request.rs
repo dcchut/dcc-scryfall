@@ -1,4 +1,5 @@
 use dcc_scryfall::{card::Identifier, SfClient, SfResult};
+
 mod helper;
 
 async fn _identifiers_request() -> SfResult<()> {

@@ -26,7 +26,6 @@ impl<'a> Endpoint for Named<'a> {
     fn query(&self) -> Vec<Query<'_, '_>> {
         vec![
             (if self.fuzzy { "fuzzy" } else { "exact" }, self.query),
-            ("pretty", "true"),
         ]
     }
 }

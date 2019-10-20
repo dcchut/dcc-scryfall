@@ -1,6 +1,7 @@
+use serde::{Deserialize, Serialize};
+
 use crate::color::Color;
 use crate::imageuri::ImageUri;
-use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Face {

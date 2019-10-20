@@ -1,5 +1,6 @@
-use crate::{SfClient, SfResult};
 use serde::de::DeserializeOwned;
+
+use crate::{SfClient, SfResult};
 
 pub mod cards;
 pub mod sets;
