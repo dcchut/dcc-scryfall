@@ -1,11 +1,11 @@
 [package]
 name = "dcc-scryfall"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Robert Usher <266585+dcchut@users.noreply.github.com>"]
 edition = "2018"
 
 [dependencies.reqwest]
-git = "https://github.com/seanmonstar/reqwest"
+version = "0.10"
 features = ["json"]
 
 [dependencies.serde]
@@ -16,4 +16,4 @@ features = ["derive"]
 version = "1.0"
 
 [dev-dependencies.tokio]
-version = "0.2.0-alpha.6"
+version = "0.2"
