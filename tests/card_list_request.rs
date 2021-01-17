@@ -1,8 +1,7 @@
 use dcc_scryfall::{SfClient, SfResult};
 
-mod helper;
-
-async fn _card_list_request() -> SfResult<()> {
+#[tokio::test]
+async fn card_list_request() -> SfResult<()> {
     let client = SfClient::new();
     let card_list = client.card_search("Ghalta, Primal Hunger").await?;
 
@@ -10,9 +9,4 @@ async fn _card_list_request() -> SfResult<()> {
     assert_eq!(card_list.data.len(), 1);
 
     Ok(())
-}
-
-#[test]
-pub fn card_list_request() {
-    helper::block_on(_card_list_request());
 }

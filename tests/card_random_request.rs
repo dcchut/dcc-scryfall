@@ -1,8 +1,7 @@
 use dcc_scryfall::{SfClient, SfResult};
 
-mod helper;
-
-async fn _random_request() -> SfResult<()> {
+#[tokio::test]
+async fn random_request() -> SfResult<()> {
     let client = SfClient::new();
     let random_card = client
         .card_random()
@@ -13,9 +12,4 @@ async fn _random_request() -> SfResult<()> {
     assert!(random_card.core.id.len() > 0);
 
     Ok(())
-}
-
-#[test]
-pub fn random_request() {
-    helper::block_on(_random_request());
 }

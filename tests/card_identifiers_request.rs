@@ -1,8 +1,7 @@
 use dcc_scryfall::{card::Identifier, SfClient, SfResult};
 
-mod helper;
-
-async fn _identifiers_request() -> SfResult<()> {
+#[tokio::test]
+async fn identifiers_request() -> SfResult<()> {
     let client = SfClient::new();
 
     let id1 = Identifier::Id(String::from("683a5707-cddb-494d-9b41-51b4584ded69"));
@@ -24,9 +23,4 @@ async fn _identifiers_request() -> SfResult<()> {
     assert_eq!(response.data[2].gameplay.name, "Chalice of the Void");
 
     Ok(())
-}
-
-#[test]
-pub fn identifiers_request() {
-    helper::block_on(_identifiers_request());
 }

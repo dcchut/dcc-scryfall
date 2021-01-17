@@ -1,8 +1,7 @@
 use dcc_scryfall::{SfClient, SfResult};
 
-mod helper;
-
-async fn _tcgplayer_request() -> SfResult<()> {
+#[tokio::test]
+async fn tcgplayer_request() -> SfResult<()> {
     let client = SfClient::new();
     let card = client
         .card_tcgplayer(162145)
@@ -12,9 +11,4 @@ async fn _tcgplayer_request() -> SfResult<()> {
     assert_eq!(card.gameplay.name, "Rona, Disciple of Gix");
 
     Ok(())
-}
-
-#[test]
-pub fn tcgplayer_request() {
-    helper::block_on(_tcgplayer_request());
 }
